@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RI-cinema</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    {% load static %}
+    {% load embed_video_tags %}
+    <link rel="stylesheet" href="{% static 'home/main.css' %}">
+</head>
+<body style="background-image: url({% static 'home/site.jpg' %}); background-attachment: fixed;">
+<!-- Шапка сайта -->
+<div class="wrapper">
+    <nav class="navbar navbar-expand-md navbar-light rounded sticky-top" style="background-color: #B6CCB8;" id="nav">
+            <div class="container-fluid">
+                        <a href="{% url 'home-main' %}" class="navbar-brand"><img src="{% static 'home/logo.png' %}"></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                        <div class="collapse navbar-collapse" id="navbarsExample09">
+                          <ul class="navbar-nav mr-auto">
+                            <li class="nav-item-active">
+                              <a class="nav-link" href="{% url 'home-main' %}">Главная</a>
+                            </li>
+                             <li class="nav-item">
+                              <a class="nav-link" href="{% url 'home-price' %}">Цены</a>
+                             </li>
+                              <li class="nav-item dropdown">
+                               <a class="nav-link" href="{% url 'portfolio' %}">Портфолио</a>
+                              </li>
+                              {% if user.profile.acess == 'allowed' %}
+                                   <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'list' %}">Найти команду</a>
+                                   </li>
+                              {% endif %}
+                          </ul>
+                        </div>
+                        <div class="navbar-nav">
+                            {% if user.is_authenticated %}
+                              <a href="{% url 'profile' %}" class="btn btn-outline-dark mr-2">Профиль</a>
+                              <a href="{% url 'exit' %}" class="btn btn-outline-dark mr-2">Выйти</a>
+                            {% else %}
+                              <a href="{% url 'reg' %}" class="btn btn-outline-dark mr-2">Регистрация</a>
+                              <a href="{% url 'user' %}" class="btn btn-outline-dark mr-2 ">Войти </a>
+                            {% endif %}
+                </div>
+            </div>
+    </nav>
+    <div class="content">
+
+{% block main_section %}
+        {% endblock %}
+
+    </div>
+    <div class="footer" style="margin-bottom: -35px;">
+          <div style="background-color: #B6CCB8; margin-bottom: -35px">
+              <p class="lead" style="text-align: center; margin-bottom: -35px; ">Телефон для связи: 8(902)909-53-42</p>
+                  <div class="col-12 social padding" id="social">
+                               <a href="https://m.vk.com/ri_cinema"><i class="fab fa-vk" id="twitter"></i></a>
+                               <a href="https://instagram.com/ri_cinema?igshid=e0yi9z0hout1"><i class="fab fa-instagram" id="inst"></i></a>
+                               <a href="https://t-do.ru/ilia_r"><i class="fab fa-telegram" id="telegram"></i></a>
+                               <a href="https://www.youtube.com/channel/UCsbMGDiKdXvrhMPCga6V8Pw"><i class="fab fa-youtube" id="youtube"></i></a>
+                  </div>
+          </div>
+    </div>
+</div>
+
+{% block footer_section %}
+        {% endblock %}
+</body>
+</html>

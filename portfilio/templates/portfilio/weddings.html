@@ -1,0 +1,19 @@
+{% extends 'home/navbar.html' %}
+{% block main_section %}
+<div class="container">
+    <div class="row" style="margin-top: 20px;">
+        {% for el in news %}
+            <div class="col-lg-6">
+                {% load embed_video_tags %}
+                {% if el.video %}
+                <iframe width="360" height="315" src="{{ el.video }}" frameborder="0" allowfullscreen></iframe>
+                <h3 class="text-muted">{{ el.title }}</h3>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock main_section %}
+
+{% block footer_section %}
+{% endblock footer_section %}

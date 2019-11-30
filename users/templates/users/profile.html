@@ -1,0 +1,25 @@
+{% extends 'home/navbar.html' %}
+{% load crispy_forms_tags %}
+{% block main_section %}
+<div class="container">
+    <h2 style="text-align: center;">Кабинет пользователя {{ user.username }}</h2>
+    <div class="media text-muted pt-3">
+        <img class="mr-2 rounded" style="width: 64px; height: 64px;" src="{{ user.profile.img.url }}">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <strong class="d-block text-gray-dark">@{{ user.username }}</strong>
+          <b>Email:</b> {{ user.email }}
+          <b>Портфолио:</b> {{ profile.exp }}
+      </p>
+    </div>
+    <h3 class="mt-4">Изменить данные пользователя</h3>
+    <form method="POST" enctype="multipart/form-data" id="prof">
+        {% csrf_token%}
+        {{ custom_profile|crispy }}
+        {{ update_user|crispy}}
+        <button type="submit" class="btn btn-outline-dark">Обновить данные</button>
+    </form>
+</div>
+{% endblock main_section %}
+
+{% block footer_section %}
+{% endblock footer_section %}

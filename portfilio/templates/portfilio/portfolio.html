@@ -1,0 +1,24 @@
+{% extends 'home/navbar.html' %}
+{% block main_section %}
+<div class="container">
+    <div class="row" style="margin-top: 20px;">
+            <div class="col-lg-6">
+              {% load static %}
+              <img class="rounded-circle" src="{% static 'wedding.jpg' %}" alt="Generic placeholder image" width="300" height="300">
+              <h2 class="text-muted">Свадьбы</h2>
+              <p>Посмотрите наши работы в области съемок свадебных мероприятий</p>
+              <p><a class="btn btn-secondary" href="{% url 'weddings' %}" role="button">Смотреть</a></p>
+            </div>
+            <div class="col-lg-6">
+              {% load static %}
+              <img class="rounded-circle" src="{% static 'kino.jpg' %}" alt="Generic placeholder image" width="300" height="300">
+              <h2 class="text-muted">Кино</h2>
+              <p>Здесь вы можете увидеть как мы снимаем кино</p>
+              <p><a class="btn btn-secondary" href="{% url 'films' %}" role="button">Смотреть</a></p>
+            </div>
+    </div>
+</div>
+{% endblock main_section %}
+
+{% block footer_section %}
+{% endblock footer_section %}

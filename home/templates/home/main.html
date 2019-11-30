@@ -1,0 +1,90 @@
+{% extends 'home/navbar.html' %}
+{% block main_section %}
+  <div class="container">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item">
+          {% load static %}
+          <img class="first-slide" src="{% static 'wed.jpg' %}" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item active">
+          {% load static %}
+          <img class="second-slide" src="{% static 'kino.jpg' %}" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          {% load static %}
+          <img class="third-slide" src="{% static 'crew.jpg' %}" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption d-none d-md-block text-right">
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+              <h2 style="text-align: center; ">Воспользуйтесь нашим сервисом подбора команды</h2>
+        <div class="col-lg-4">
+          {% load static %}
+          <img class="rounded-circle" src="{% static '1.png' %}" alt="Generic placeholder image" width="150" height="150" id="pic1" style="margin-left: 70px;">
+          <h2 class="text-muted">1.Зарегестрируйтесь</h2>
+          <p>Зарегестрируйтесь на сайте, чтобы получить доступ к базе пользователей, которые ищут команду для съемок.</p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          {% load static %}
+          <img class="rounded-circle" src="{% static '2.png' %}" alt="Generic placeholder image" width="150" height="150" id="pic2" style="margin-left: 70px;">
+          <h2 class="text-muted">2.Найдите команду</h2>
+          <p>Свяжитесь с людьми, используя контактную информацию.</p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          {% load static %}
+          <img class="rounded-circle" src="{% static 'camera.png' %}" alt="Generic placeholder image" width="150" height="150" id="pic3" style="margin-left: 70px;">
+          <h2 class="text-muted">3.Работайте вместе</h2>
+          <p>Приступайте к работе в новом коллективе!</p>
+          <p><a class="btn btn-dark" href="{% url 'reg' %}" role="button">Перейти к регистрации</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+      <!-- START THE FEATURETTES -->
+      {% for post in news %}
+      <hr class="featurette-divider">
+      <div class="row featurette" style="margin-bottom: 20px">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">{{ post.title }}</h2>
+          <p class="lead"> {{ post.text }} </p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-fluid mx-auto" style="width: 400px; height: 400px;" src="{{ post.image.url }}" data-holder-rendered="true">
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+{% endblock main_section %}
+
+{% block footer_section %}
+{% endblock footer_section %}
